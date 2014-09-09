@@ -1,0 +1,29 @@
+Router.configure({
+  layoutTemplate: 'layout',
+  loadingTemplate: 'loading'
+});
+
+HomeController = RouteController.extend({
+  template: 'home'
+});
+
+Router.map(function() {
+  this.route('home', {
+    path: '/'
+  });
+});
+
+
+var requireLogin = function(pause) {
+  if (! Meteor.user()) {
+    if (Meteor.loggingIn())
+      this.render(this.loadingTemplate);
+    else
+      this.render('accessDenied');
+
+    pause();
+  }
+}
+
+Router.onBeforeAction('loading');
+Router.onBeforeAction(function() { clearErrors() });

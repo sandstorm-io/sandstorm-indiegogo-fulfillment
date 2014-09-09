@@ -1,0 +1,9 @@
+<template name="admin">
+  <div id="admin">
+    <h1>Admin Tools</h1>
+    <button id="uploadCsv" type="button" class="btn btn-default">Upload CSV data</button>
+    <button id="downloadCsv" type="button" class="btn btn-default">Download CSV data</button>
+
+    {{> reactiveTable collection=entries settings=tableSettings}}
+  </div>
+</template>

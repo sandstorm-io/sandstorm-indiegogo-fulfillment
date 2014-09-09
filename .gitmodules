@@ -1,0 +1,3 @@
+[submodule "packages/meteor-accounts-sandstorm"]
+	path = packages/meteor-accounts-sandstorm
+	url = git@github.com:jparyani/meteor-accounts-sandstorm.git

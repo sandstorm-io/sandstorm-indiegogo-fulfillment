@@ -1,0 +1,43 @@
+<template name="entry">
+  <div id="entry">
+  <p>
+    Welcome and thank you for supporting the Sandstorm Indiegogo campaign.
+  </p>
+
+  {{#autoForm collection="Entries" doc=this id="updateEntryForm" type="update" }}
+    <fieldset>
+      <legend>Update your info</legend>
+      {{> afQuickField name='email'}}
+      {{> afQuickField name='name'}}
+      {{#if isShippingRelevant}}
+      {{> afQuickField name='address' rows=3}}
+      {{/if}}
+      {{#if isSizeRelevant}}
+      {{#afFieldSelect name="shirtSize"}}
+        <optgroup label="Men's">
+          <option value="Men's Small">Men's Small</option>
+          <option value="Men's Medium">Men's Medium</option>
+          <option value="Men's Large">Men's Large</option>
+          <option value="Men's X-Large">Men's X-Large</option>
+          <option value="Men's 2X-Large">Men's 2X-Large</option>
+          <option value="Men's 3X-Large">Men's 3X-Large</option>
+        </optgroup>
+        <optgroup label="Women's">
+          <option value="Women's Small">Women's Small</option>
+          <option value="Women's Medium">Women's Medium</option>
+          <option value="Women's Large">Women's Large</option>
+          <option value="Women's X-Large">Women's X-Large</option>
+          <option value="Women's 2X-Large">Women's 2X-Large</option>
+        </optgroup>
+      {{/afFieldSelect}}
+      {{/if}}
+    </fieldset>
+    <button id="updateButton" type="submit" class="btn btn-primary">Update</button>
+
+    {{#if isUpdated}}
+    <div class="alert alert-success" role="alert">You have successfully updated your info.</div>
+    {{/if}}
+
+  {{/autoForm}}
+  </div>
+</template>

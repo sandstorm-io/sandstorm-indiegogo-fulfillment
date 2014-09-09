@@ -9,11 +9,12 @@
       <legend>Update your info</legend>
       {{> afQuickField name='email'}}
       {{> afQuickField name='name'}}
+      <div class="alert alert-info" role="alert">Leave this blank if you don't want your name in the credits</div>
       {{#if isShippingRelevant}}
       {{> afQuickField name='address' rows=3}}
       {{/if}}
       {{#if isSizeRelevant}}
-      {{#afFieldSelect name="shirtSize"}}
+      {{#afFieldSelect name="shirtSize" class="shirt"}}
         <optgroup label="Men's">
           <option value="Men's Small">Men's Small</option>
           <option value="Men's Medium">Men's Medium</option>
@@ -30,6 +31,7 @@
           <option value="Women's 2X-Large">Women's 2X-Large</option>
         </optgroup>
       {{/afFieldSelect}}
+      <div class="alert alert-info" role="alert">Shirts are American Apparel, which run a little small.</div>
       {{/if}}
     </fieldset>
     <button id="updateButton" type="submit" class="btn btn-primary">Update</button>

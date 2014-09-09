@@ -9,6 +9,12 @@ Template.entry.created = ->
 Template.entry.isUpdated = ->
   Session.get 'isUpdated'
 
+Template.entry.submitText = ->
+  if @lastUpdated
+    'Update'
+  else
+    'Confirm'
+
 AutoForm.hooks
   updateEntryForm:
     before:

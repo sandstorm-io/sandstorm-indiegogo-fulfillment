@@ -47,8 +47,6 @@
 
 @Entries.deny
   update: (userId, doc, fieldNames, modifier) ->
-    # modifier.$set.lastUpdated = Date.now()
+    modifier.$set.lastUpdated = Date.now()
 
-    a= _.without(fieldNames, 'name', 'address', 'shirtSize').length
-    console.log a, fieldNames
-    a>0
+    return _.without(fieldNames, 'name', 'address', 'shirtSize').length > 0

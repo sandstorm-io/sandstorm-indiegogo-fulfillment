@@ -1,6 +1,6 @@
 Meteor.publish 'entries', ->
   unless isAdmin(@userId)
-    return null
+    return []
 
   return Entries.find()
 

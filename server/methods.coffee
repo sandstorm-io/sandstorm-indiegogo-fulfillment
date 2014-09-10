@@ -24,6 +24,9 @@ if isTesting
 
 Meteor.methods
   uploadCsv: (data) ->
+    unless isAdmin(Meteor.userId())
+      throw new Meteor.Error(403, "Unauthorized", "Must be admin")
+
     parsed = csv_parse data, {columns: true}
     parsed.forEach (row) ->
       row.lastUpdated = ''
@@ -34,6 +37,9 @@ Meteor.methods
     return
 
   downloadCsv: (data) ->
+    unless isAdmin(Meteor.userId())
+      throw new Meteor.Error(403, "Unauthorized", "Must be admin")
+
     entries = Entries.find().fetch()
     entries = _.map entries, (row) ->
       return _.omit(row, '_id')

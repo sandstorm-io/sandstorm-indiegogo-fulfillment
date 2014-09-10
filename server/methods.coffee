@@ -29,7 +29,7 @@ Meteor.methods
 
     parsed = csv_parse data, {columns: true}
     parsed.forEach (row) ->
-      row.lastUpdated = ''
+      row.lastUpdated = null
       row.isShippingRelevant = if row.isShippingRelevant == 'true' then true else false
       row.isSizeRelevant = if row.isSizeRelevant == 'true' then true else false
       id = Entries.insert row

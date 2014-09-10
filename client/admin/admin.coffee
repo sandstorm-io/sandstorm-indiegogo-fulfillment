@@ -15,7 +15,10 @@ Template.admin.events
       reader = new FileReader()
 
       reader.onload = (e) ->
-        Meteor.call('uploadCsv', reader.result)
+        Meteor.call('uploadCsv', reader.result, (err) ->
+          if err
+            throwError(err)
+        )
 
       reader.readAsText(file)
 
@@ -25,7 +28,7 @@ Template.admin.events
   "click #downloadCsv": (event) ->
     Meteor.call 'downloadCsv', (err, data) ->
       if err
-        console.error err
+        throwError(err)
         return
       download('data.csv', data)
 

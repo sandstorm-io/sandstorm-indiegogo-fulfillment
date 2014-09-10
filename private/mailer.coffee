@@ -32,6 +32,8 @@ if process.argv.length != 5
 csv_file = process.argv[2]
 grain_url = process.argv[3]
 smtp_path = process.argv[4]
+if grain_url[grain_url.length-1] == '/'
+  grain_url = grain_url.slice 0, grain_url.length - 1
 
 emailTemplates templatesDir, (err, template) ->
   if err
@@ -97,6 +99,7 @@ emailTemplates templatesDir, (err, template) ->
     csv_input = fs.createReadStream(csv_file)
     send_mail = (batch) -> (record) ->
       if not record.lastUpdated
+        record.link = grain_url + record.link
         render = new Render(record)
         render.batch batch
 

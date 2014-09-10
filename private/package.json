@@ -1,0 +1,18 @@
+{
+  "name": "sandstorm-indiegogo-mailer",
+  "description": "Project for mailing to",
+  "version": "0.0.1",
+  "dependencies": {
+    "coffee-script": "~1.8.0",
+    "csv": "~0.4.0",
+    "email-templates": "~1.1.1",
+    "handlebars": "~2.0.0",
+    "nodemailer": "~1.2.2",
+    "nodemailer-smtp-transport": "~0.1.12",
+    "underscore": "~1.7.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jparyani/sandstorm-indiegogo-fulfillment"
+  }
+}

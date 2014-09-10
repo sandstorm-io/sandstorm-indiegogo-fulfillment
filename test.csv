@@ -1,4 +1,5 @@
 email,name,address,shirtSize,isShippingRelevant,isSizeRelevant
-test@example.com,Test User,123 Road St; Mountain View; CA 94040,Men's X-Large,true,true
+test@example.com,Test User,"123 Road St
+Mountain View; CA 94040",Men's X-Large,true,true
 test2@example.com,Test User2,456 Street Road; Mountain View; CA 94040,,true,false
 test3@example.com,Test User3,,,false,false

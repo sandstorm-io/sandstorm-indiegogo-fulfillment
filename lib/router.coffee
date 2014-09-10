@@ -19,7 +19,6 @@ Router.map ->
     data: ->
       return Entries.findOne(this.params._id)
 
-# TODO: make this requireAdmin
 requireAdmin = (pause) ->
   if Meteor.user()
     if _.contains(Meteor.user().profile.permissions, 'admin')

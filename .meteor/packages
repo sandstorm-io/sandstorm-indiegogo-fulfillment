@@ -8,7 +8,6 @@ bootstrap-3
 iron-router
 spin
 iron-router-progress
-accounts-password
 coffeescript
 stylus
 meteor-accounts-sandstorm

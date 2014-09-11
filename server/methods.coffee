@@ -52,10 +52,3 @@ Meteor.methods
 
     Entries.remove({})
     return
-
-  updateEntry: (newEntry) ->
-    id = newEntry._id
-    newEntry = _.pick(newEntry, 'name', 'address', 'shirtSize')
-
-    Entries.update {_id: id}, {"$set": newEntry}
-    return

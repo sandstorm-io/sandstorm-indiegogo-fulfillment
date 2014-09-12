@@ -11,10 +11,10 @@ if isTesting
       Meteor.users.remove({})
       login = Accounts.updateOrCreateUserFromExternalService("sandstorm",
         id: 0
+        permissions: ['admin']
       ,
         profile:
           name: 'Test Admin'
-          permissions: ['admin']
       )
       console.log login
       token = Accounts._generateStampedLoginToken()

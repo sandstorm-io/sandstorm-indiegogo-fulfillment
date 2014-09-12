@@ -4,4 +4,4 @@
 
 @isAdmin = (userId) ->
   user = Meteor.users.findOne userId
-  user and _.contains(user.profile.permissions, 'admin')
+  user and _.contains(user.services.sandstorm.permissions, 'admin')

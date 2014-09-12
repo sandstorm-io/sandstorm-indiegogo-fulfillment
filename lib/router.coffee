@@ -1,3 +1,6 @@
+if Meteor.isClient
+  Meteor.subscribe 'userData'
+
 Router.configure
   layoutTemplate: "layout"
   loadingTemplate: "loading"
@@ -21,7 +24,7 @@ Router.map ->
 
 requireAdmin = (pause) ->
   if Meteor.user()
-    if _.contains(Meteor.user().profile.permissions, 'admin')
+    if _.contains(Meteor.user().services.sandstorm.permissions, 'admin')
       return
     else
       @render "accessDenied"

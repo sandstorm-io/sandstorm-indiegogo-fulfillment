@@ -8,7 +8,7 @@
   ,
   name:
     type: String,
-    label: "Name",
+    label: "Name for credits",
     optional: true
   ,
   address:

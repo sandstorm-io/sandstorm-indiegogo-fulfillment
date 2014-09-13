@@ -14,6 +14,8 @@
       {{> afQuickField name='address' rows=3}}
       {{/if}}
       {{#if isSizeRelevant}}
+
+      <label class="control-label" for="shirtSize">T-shirt size</label>
       {{#afFieldSelect name="shirtSize" class="shirt"}}
         <optgroup label="Men's">
           <option value="Men's Small">Men's Small</option>

@@ -4,6 +4,9 @@ download = (filename, text) ->
   pom.setAttribute('download', filename)
   pom.click()
 
+reconnectHandler = ->
+  location.reload()
+
 Template.admin.events
   "click #uploadCsv": (event) ->
     input = document.createElement("input")
@@ -18,6 +21,9 @@ Template.admin.events
         Meteor.call('uploadCsv', reader.result, (err) ->
           if err
             throwError(err)
+          Meteor.disconnect()
+          $('#csvLoading').css('display', 'block')
+          Meteor.setTimeout reconnectHandler, 5000
         )
 
       reader.readAsText(file)

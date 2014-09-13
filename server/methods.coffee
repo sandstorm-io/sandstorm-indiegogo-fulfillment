@@ -21,19 +21,25 @@ if isTesting
       Accounts._insertLoginToken login.userId, token
       return token.token
 
+uploadCsvHelper = (data) ->
+  parsed = csv_parse data, {columns: true}
+  parsed.forEach (row) ->
+    row.lastUpdated = null
+    row.isShippingRelevant = if row.isShippingRelevant == 'true' then true else false
+    row.isSizeRelevant = if row.isSizeRelevant == 'true' then true else false
+    id = Entries.insert row
+    Entries.update {_id: id}, {'$set': {'link': "/entry/#{id}"}}
+
 
 Meteor.methods
   uploadCsv: (data) ->
     unless isAdmin(Meteor.userId())
       throw new Meteor.Error(403, "Unauthorized", "Must be admin")
 
-    parsed = csv_parse data, {columns: true}
-    parsed.forEach (row) ->
-      row.lastUpdated = null
-      row.isShippingRelevant = if row.isShippingRelevant == 'true' then true else false
-      row.isSizeRelevant = if row.isSizeRelevant == 'true' then true else false
-      id = Entries.insert row
-      Entries.update {_id: id}, {'$set': {'link': "/entry/#{id}"}}
+    # Hack to give the client time to disconnect
+    # We do this since non-batched inserts take forever for the client to download
+    # and there's no better way to batch inserts than having the client disconnect/reconnect
+    Meteor.setTimeout uploadCsvHelper.bind(this, data), 100
     return
 
   downloadCsv: (data) ->

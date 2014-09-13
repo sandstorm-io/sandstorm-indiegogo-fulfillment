@@ -50,7 +50,7 @@ Meteor.methods
     entries = _.map entries, (row) ->
       return _.omit(row, '_id')
 
-    return csv_stringify entries, {header: true}
+    return csv_stringify entries, {header: true, columns: ['address','email','isShippingRelevant','isSizeRelevant','lastUpdated','link','name','shirtSize']}
 
   clearEntries: ->
     unless isAdmin(Meteor.userId())

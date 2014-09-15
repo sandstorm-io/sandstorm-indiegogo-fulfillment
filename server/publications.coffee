@@ -5,6 +5,7 @@ Meteor.publish 'entries', ->
   return Entries.find()
 
 Meteor.publish 'singleEntry', (id) ->
+  check(id, String)
   return id && Entries.find(id)
 
 Meteor.publish 'userData', ->

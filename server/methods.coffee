@@ -27,7 +27,16 @@ uploadCsvHelper = (data) ->
     row.lastUpdated = null
     row.isShippingRelevant = if row.isShippingRelevant == 'true' then true else false
     row.isSizeRelevant = if row.isSizeRelevant == 'true' then true else false
-    id = Entries.insert row
+
+    oldRow = Entries.findOne {'email': row.email}
+    if oldRow
+      for k,v of oldRow
+        if v
+          row[k] = v
+      id = oldRow._id
+      Entries.update {_id: id}, {$set: row}
+    else
+      id = Entries.insert row
     Entries.update {_id: id}, {'$set': {'link': "/entry/#{id}"}}
 
 

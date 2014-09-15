@@ -11,7 +11,7 @@
       {{> afQuickField name='name'}}
       <div class="alert alert-info" role="alert">Leave this blank if you don't want your name in the credits</div>
       {{#if isShippingRelevant}}
-      {{> afQuickField name='address' rows=3}}
+      {{> afQuickField name='address' rows=4}}
       {{/if}}
       {{#if isSizeRelevant}}
 
@@ -33,13 +33,13 @@
           <option value="Women's 2X-Large">Women's 2X-Large</option>
         </optgroup>
       {{/afFieldSelect}}
-      <div class="alert alert-info" role="alert">Shirts are American Apparel, which run a little small.</div>
+      <div class="alert alert-info" role="alert">Shirts are American Apparel, which run a little small</div>
       {{/if}}
     </fieldset>
     <button id="updateButton" type="submit" class="btn btn-primary">{{submitText}}</button>
 
     {{#if isUpdated}}
-    <div class="alert alert-success" role="alert">You have successfully updated your info.</div>
+    <div class="alert alert-success" role="alert">You have successfully updated your info</div>
     {{/if}}
 
   {{/autoForm}}

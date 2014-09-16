@@ -39,7 +39,8 @@
     <button id="updateButton" type="submit" class="btn btn-primary">{{submitText}}</button>
 
     {{#if isUpdated}}
-    <div class="alert alert-success" role="alert">You have successfully updated your info</div>
+    <div class="alert alert-success" role="alert">Thanks! You're all set. {{#if isShippingRelevant}}Expect a package in the next two months.{{else}}We'll update the credits as soon as we get everyone's info.{{/if}}</div>
+
     {{/if}}
 
   {{/autoForm}}

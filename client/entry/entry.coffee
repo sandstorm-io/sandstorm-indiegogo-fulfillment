@@ -17,6 +17,12 @@ Template.entry.submitText = ->
   else
     'Confirm'
 
+Template.entry.isConfirmed = ->
+  if @lastUpdated
+    true
+  else
+    false
+
 AutoForm.hooks
   updateEntryForm:
     before:

@@ -41,9 +41,9 @@
   ,
 ))
 
-@Entries.allow
-  update: (userId, doc) ->
-    return true
+# @Entries.allow
+#   update: (userId, doc) ->
+#     return true
 
 @Entries.deny
   update: (userId, doc, fieldNames, modifier) ->

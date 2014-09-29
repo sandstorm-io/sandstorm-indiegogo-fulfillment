@@ -9,13 +9,15 @@
 
 If you have any last-minute changes you'd like to make, please drop a line to <a href="mailto:support@sandstorm.io">support@sandstorm.io</a></p></div>
   {{else}}
-  <div class="alert alert-danger" role="alert">
+  <div class="alert alert-danger" role="alert"><p>
+  Sorry, this form has expired.<br /><br />
+
     {{#if isShippingRelevant}}
-    Please email your {{#if isSizeRelevant}}t-shirt and {{/if}}final mailing address
+    Please email your {{#if isSizeRelevant}}t-shirt size and {{/if}}final mailing address
     {{else}}
     Please email your name to
     {{/if}}
-    to <a href="mailto:support@sandstorm.io">support@sandstorm.io</a>. Thanks!</div>
+    to <a href="mailto:support@sandstorm.io">support@sandstorm.io</a>. Thanks!</p></div>
   {{/if}}
   {{#autoForm collection="Entries" doc=this id="updateEntryForm" type="update" }}
     <fieldset>

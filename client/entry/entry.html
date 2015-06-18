@@ -1,7 +1,9 @@
 <template name="entry">
   <div id="entry">
-  <p>
-    Welcome and thank you again for supporting the Sandstorm Indiegogo campaign. This form is for allocating part of your Sandstorm contribution towards the <a href="http://igg.me/at/roundcubenext/">Roundcube Next</a> indiegogo campaign.
+  <p id="overview">
+    Thank you again for supporting the Sandstorm Indiegogo campaign! Please use this form to designate your Sandstorm credit to support the Indiegogo campaign of <a href="http://igg.me/at/roundcubenext">Roundcube Next</a>.
+
+    This form will expire 4 four hours before Roundcube Next's campaign completes.
   </p>
 
   {{#autoForm collection="Entries" doc=this id="updateEntryForm" type="update" }}
@@ -10,11 +12,8 @@
       {{> afQuickField name='email'}}
       {{> afQuickField name='name'}}
       <div class="alert alert-info" role="alert">Leave this blank if you don't want your name in the credits</div>
-      {{#if isShippingRelevant}}
-      {{> afQuickField name='address' rows=4}}
-      {{/if}}
       {{> afQuickField name='donation'}}
-      <div class="alert alert-info" role="alert">You can donate up to ${{maxDonation}} of your Sandstorm contribution.</div>
+      <div class="alert alert-info" role="alert">You have ${{maxDonation}} of credit which you can contribute. No payment necessary!</div>
     </fieldset>
     <button id="updateButton" type="submit" class="btn btn-primary">{{submitText}}</button>
 

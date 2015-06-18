@@ -8,7 +8,7 @@
   ,
   name:
     type: String,
-    label: "Name for credits",
+    label: "Name for Roundcube Next credits",
     optional: true
   ,
   maxDonation:
@@ -17,7 +17,7 @@
   ,
   donation:
     type: Number,
-    label: "Amount to donate ($)",
+    label: "Amount to contribute ($)",
     optional: true
   ,
   lastUpdated:

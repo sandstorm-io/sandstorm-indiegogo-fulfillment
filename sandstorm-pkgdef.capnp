@@ -19,9 +19,9 @@ const pkgdef :Spk.PackageDefinition = (
 
     appTitle = (defaultText = "RoundcubeNext Fundraiser"),
 
-    appVersion = 3,  # Increment this for every release.
+    appVersion = 4,  # Increment this for every release.
 
-    appMarketingVersion = (defaultText = "0.2.1"),
+    appMarketingVersion = (defaultText = "0.2.2"),
 
     actions = [
       # Define your "new document" handlers here.

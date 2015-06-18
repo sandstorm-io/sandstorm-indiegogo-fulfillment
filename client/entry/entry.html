@@ -1,7 +1,7 @@
 <template name="entry">
   <div id="entry">
   <p>
-    Welcome and thank you for supporting the Sandstorm Indiegogo campaign.
+    Welcome and thank you again for supporting the Sandstorm Indiegogo campaign. This form is for allocating part of your Sandstorm contribution towards the <a href="http://igg.me/at/roundcubenext/">Roundcube Next</a> indiegogo campaign.
   </p>
 
   {{#autoForm collection="Entries" doc=this id="updateEntryForm" type="update" }}
@@ -13,33 +13,13 @@
       {{#if isShippingRelevant}}
       {{> afQuickField name='address' rows=4}}
       {{/if}}
-      {{#if isSizeRelevant}}
-
-      <label class="control-label" for="shirtSize">T-shirt size</label>
-      {{#afFieldSelect name="shirtSize" class="shirt"}}
-        <optgroup label="Men's">
-          <option value="Men's Small">Men's Small</option>
-          <option value="Men's Medium">Men's Medium</option>
-          <option value="Men's Large">Men's Large</option>
-          <option value="Men's X-Large">Men's X-Large</option>
-          <option value="Men's 2X-Large">Men's 2X-Large</option>
-          <option value="Men's 3X-Large">Men's 3X-Large</option>
-        </optgroup>
-        <optgroup label="Women's">
-          <option value="Women's Small">Women's Small</option>
-          <option value="Women's Medium">Women's Medium</option>
-          <option value="Women's Large">Women's Large</option>
-          <option value="Women's X-Large">Women's X-Large</option>
-          <option value="Women's 2X-Large">Women's 2X-Large</option>
-        </optgroup>
-      {{/afFieldSelect}}
-      <div class="alert alert-info" role="alert">Shirts are American Apparel, which run a little small</div>
-      {{/if}}
+      {{> afQuickField name='donation'}}
+      <div class="alert alert-info" role="alert">You can donate up to ${{maxDonation}} of your Sandstorm contribution.</div>
     </fieldset>
     <button id="updateButton" type="submit" class="btn btn-primary">{{submitText}}</button>
 
     {{#if isUpdated}}
-    <div class="alert alert-success" role="alert">Thanks! You're all set. {{#if isShippingRelevant}}Expect a package in the next two months.{{else}}We'll update the credits as soon as we get everyone's info.{{/if}}</div>
+    <div class="alert alert-success" role="alert">Thanks! You're all set. We'll forward your contribution to the <a href="http://igg.me/at/roundcubenext/">Roundcube Next</a> indiegogo campaign.</div>
 
     {{/if}}
 

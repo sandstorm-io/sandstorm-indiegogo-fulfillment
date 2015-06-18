@@ -9,7 +9,7 @@ const pkgdef :Spk.PackageDefinition = (
   # The package definition. Note that the spk tool looks specifically for the
   # "pkgdef" constant.
 
-  id = "4ujxmd5zps58fasvtx1jv3gzhhth749qz5quu7aju8hmqf629gfh",
+  id = "zzafde4jdf112w8afphp7g18akmjnajv8g3g3m9n2r94d98e40ph",
   # Your app ID is actually its public key. The private key was placed in
   # your keyring. All updates must be signed with the same key.
 
@@ -17,11 +17,15 @@ const pkgdef :Spk.PackageDefinition = (
     # This manifest is included in your app package to tell Sandstorm
     # about your app.
 
-    appVersion = 0,  # Increment this for every release.
+    appTitle = (defaultText = "RoundcubeNext Fundraiser"),
+
+    appVersion = 2,  # Increment this for every release.
+
+    appMarketingVersion = (defaultText = "0.2.0"),
 
     actions = [
       # Define your "new document" handlers here.
-      ( title = (defaultText = "New IndiegogoFulfillment Instance"),
+      ( title = (defaultText = "New Fundraiser Instance"),
         command = .myCommand
         # The command to run when starting for the first time. (".myCommand"
         # is just a constant defined at the bottom of the file.)
@@ -48,7 +52,14 @@ const pkgdef :Spk.PackageDefinition = (
   # (An alternative is to automatically detect dependencies by watching what
   # the app opens while running in dev mode. To see what that looks like,
   # run `spk init` without the -A option.)
-  bridgeConfig = (viewInfo = (permissions = [(name = "admin")]))
+  bridgeConfig = (viewInfo = (
+    permissions = [(name = "admin")],
+    roles = [(title = (defaultText = "default"),
+          permissions = [false],
+          verbPhrase = (defaultText = "Can only read")),
+         (title = (defaultText = "admin"),
+          permissions = [true],
+          verbPhrase = (defaultText = "Can access the admin page"))]))
 );
 
 const myCommand :Spk.Manifest.Command = (

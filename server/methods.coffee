@@ -24,10 +24,6 @@ if isTesting
 uploadCsvHelper = (data) ->
   parsed = csv_parse data, {columns: true}
   parsed.forEach (row) ->
-    row.lastUpdated = null
-    row.isShippingRelevant = if row.isShippingRelevant == 'true' then true else false
-    row.isSizeRelevant = if row.isSizeRelevant == 'true' then true else false
-
     oldRow = Entries.findOne {'email': row.email}
     if oldRow
       for k,v of oldRow

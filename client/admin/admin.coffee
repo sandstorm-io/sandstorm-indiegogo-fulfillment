@@ -42,10 +42,8 @@ Template.admin.tableSettings = ->
   fields = [
     'email',
     'name',
-    'address',
-    'shirtSize',
-    'isShippingRelevant',
-    'isSizeRelevant'
+    'maxDonation',
+    'donation',
   ]
 
   schema = Entries.simpleSchema()._schema

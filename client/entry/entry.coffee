@@ -3,6 +3,8 @@ Template.entry.rendered = ->
     throwError("Couldn't find your info. Please make sure your URL is correct.")
   $("[name='email']").attr("readonly", "readonly")
   $("option[value='#{@data.shirtSize || "Men's Medium"}']").prop('selected', true)
+  if !@data.donation
+    $("[name='donation']").val(@data.maxDonation)
 
 Template.entry.created = ->
   Session.set 'isUpdated', false

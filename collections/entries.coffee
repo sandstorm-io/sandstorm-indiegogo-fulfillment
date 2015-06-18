@@ -11,23 +11,14 @@
     label: "Name for credits",
     optional: true
   ,
-  address:
-    type: String,
-    label: "Shipping address",
+  maxDonation:
+    type: Number,
+    label: "Maximum possible donation"
+  ,
+  donation:
+    type: Number,
+    label: "Amount to donate ($)",
     optional: true
-  ,
-  shirtSize:
-    type: String,
-    label: "Shirt size",
-    optional: true
-  ,
-  isShippingRelevant:
-    type: Boolean,
-    label: "Is shipping address needed?"
-  ,
-  isSizeRelevant:
-    type: Boolean,
-    label: "Is shirt size needed?"
   ,
   lastUpdated:
     type: Date,
@@ -49,4 +40,10 @@
   update: (userId, doc, fieldNames, modifier) ->
     modifier.$set.lastUpdated = Date.now()
 
-    return _.without(fieldNames, 'name', 'address', 'shirtSize').length > 0
+    if _.contains(fieldNames, "donation")
+      if modifier["$set"].donation > doc.maxDonation
+        throw new Meteor.Error(403, "You entered a donation amount grater than your maximum possible $#{doc.maxDonation}.")
+      if modifier["$set"].donation < 0
+        throw new Meteor.Error(403, "You entered a donation less than 0.")
+
+    return _.without(fieldNames, 'name', 'donation').length > 0

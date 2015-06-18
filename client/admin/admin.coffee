@@ -44,6 +44,7 @@ Template.admin.tableSettings = ->
     'name',
     'maxDonation',
     'donation',
+    'unsubscribed'
   ]
 
   schema = Entries.simpleSchema()._schema

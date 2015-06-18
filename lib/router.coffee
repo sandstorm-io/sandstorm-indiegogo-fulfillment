@@ -18,7 +18,7 @@ Router.map ->
   @route 'entry',
     path: '/entry/:_id',
     waitOn: ->
-      return Meteor.subscribe('singleEntry', this.params._id)
+      return [Meteor.subscribe('singleEntry', this.params._id), Meteor.subscribe('totalDonation')]
     data: ->
       if this.params.unsubscribe
         Session.set("unsubscribed", this.params.unsubscribe)

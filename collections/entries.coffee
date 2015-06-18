@@ -52,3 +52,5 @@
         throw new Meteor.Error(403, "You entered a donation less than 0.")
 
     return _.without(fieldNames, 'name', 'donation', 'unsubscribed').length > 0
+
+@TotalDonation = new Meteor.Collection 'totalDonation'

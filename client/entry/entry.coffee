@@ -21,6 +21,9 @@ Template.entry.submitText = ->
   else
     'Confirm'
 
+Template.entry.totalDonation = ->
+  TotalDonation.findOne().total
+
 AutoForm.hooks
   updateEntryForm:
     before:

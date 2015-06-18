@@ -14,3 +14,30 @@ Meteor.publish 'userData', ->
                              {fields: {'services.sandstorm.permissions': 1}});
   else
     this.ready()
+
+
+calcTotal = ->
+  total = 0
+  Entries.find().forEach (row) ->
+    total += row.donation
+  return total
+
+Meteor.startup ->
+  total = TotalDonation.findOne()
+  if !total
+    TotalDonation.insert({total: 0})
+  else
+    TotalDonation.update({_id: total._id}, {$set: {total: 0}})
+
+  @Entries.find().observe
+    changed: (doc, docBefore) ->
+      total = TotalDonation.findOne()
+      TotalDonation.update({_id: total._id}, {$inc: {total: doc.donation - docBefore.donation}})
+    ,
+    added: (doc) ->
+      total = TotalDonation.findOne()
+      if doc.donation
+        TotalDonation.update({_id: total._id}, {$inc: {total: doc.donation}})
+
+Meteor.publish 'totalDonation', ->
+  TotalDonation.find()

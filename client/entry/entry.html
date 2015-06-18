@@ -1,5 +1,10 @@
 <template name="entry">
   <div id="entry">
+  {{#if unsubscribed}}
+  <h2><b>{{email}}</b> has been unsubscribed.</h2>
+  <br>
+  <h2>Sorry! We won't bother you again.</h2>
+  {{else}}
   <p id="overview">
     Thank you again for supporting the Sandstorm Indiegogo campaign! Please use this form to designate your Sandstorm credit to support the Indiegogo campaign of <a href="http://igg.me/at/roundcubenext">Roundcube Next</a>.
 
@@ -23,5 +28,6 @@
     {{/if}}
 
   {{/autoForm}}
+  {{/if}}
   </div>
 </template>

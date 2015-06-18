@@ -12,6 +12,9 @@ Template.entry.created = ->
 Template.entry.isUpdated = ->
   Session.get 'isUpdated'
 
+Template.entry.unsubscribed = ->
+  Session.get 'unsubscribed'
+
 Template.entry.submitText = ->
   if @lastUpdated
     'Update'

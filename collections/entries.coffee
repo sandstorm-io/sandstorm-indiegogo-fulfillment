@@ -30,6 +30,11 @@
     label: "Link to entry",
     optional: true
   ,
+  unsubscribed:
+    type: Boolean,
+    label: "Unsubscribed",
+    optional: true
+  ,
 ))
 
 @Entries.allow
@@ -46,4 +51,4 @@
       if modifier["$set"].donation < 0
         throw new Meteor.Error(403, "You entered a donation less than 0.")
 
-    return _.without(fieldNames, 'name', 'donation').length > 0
+    return _.without(fieldNames, 'name', 'donation', 'unsubscribed').length > 0

@@ -20,6 +20,9 @@ Router.map ->
     waitOn: ->
       return Meteor.subscribe('singleEntry', this.params._id)
     data: ->
+      if this.params.unsubscribe
+        Session.set("unsubscribed", this.params.unsubscribe)
+        Entries.update({_id: this.params._id}, {$set: {unsubscribed: true}})
       return Entries.findOne(this.params._id)
 
 requireAdmin = (pause) ->

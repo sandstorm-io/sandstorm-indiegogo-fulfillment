@@ -29,15 +29,13 @@ Meteor.startup ->
   else
     TotalDonation.update({_id: total._id}, {$set: {total: 0}})
 
+  # we don't need an added cb, since changed is called on adds
   @Entries.find().observe
     changed: (doc, docBefore) ->
       total = TotalDonation.findOne()
-      TotalDonation.update({_id: total._id}, {$inc: {total: doc.donation - docBefore.donation}})
-    ,
-    added: (doc) ->
-      total = TotalDonation.findOne()
+      previous = docBefore.donation || 0
       if doc.donation
-        TotalDonation.update({_id: total._id}, {$inc: {total: doc.donation}})
+        TotalDonation.update({_id: total._id}, {$inc: {total: doc.donation - previous}})
 
 Meteor.publish 'totalDonation', ->
   TotalDonation.find()

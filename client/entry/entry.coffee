@@ -2,8 +2,6 @@ Template.entry.rendered = ->
   if not @data
     throwError("Couldn't find your info. Please make sure your URL is correct.")
   $("[name='email']").attr("readonly", "readonly")
-  if !@data.donation
-    $("[name='donation']").val(@data.maxDonation)
 
 Template.entry.created = ->
   Session.set 'isUpdated', false

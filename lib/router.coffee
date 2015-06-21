@@ -22,7 +22,9 @@ Router.map ->
     data: ->
       if this.params.unsubscribe
         Session.set("unsubscribed", this.params.unsubscribe)
-        Entries.update({_id: this.params._id}, {$set: {unsubscribed: true}})
+        entry = Entries.findOne({_id: this.params._id})
+        if entry && !entry.unsubscribed
+          Entries.update({_id: this.params._id}, {$set: {unsubscribed: true}})
       return Entries.findOne(this.params._id)
 
 requireAdmin = (pause) ->

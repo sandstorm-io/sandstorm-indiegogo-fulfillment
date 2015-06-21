@@ -47,7 +47,7 @@
 
     if _.contains(fieldNames, "donation")
       if modifier["$set"].donation > doc.maxDonation
-        throw new Meteor.Error(403, "You entered a donation amount grater than your maximum possible $#{doc.maxDonation}.")
+        throw new Meteor.Error(403, "You entered a donation amount greater than your maximum possible $#{doc.maxDonation}.")
       if modifier["$set"].donation < 0
         throw new Meteor.Error(403, "You entered a donation less than 0.")
 

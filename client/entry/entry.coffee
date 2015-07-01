@@ -1,7 +1,8 @@
 Template.entry.rendered = ->
   if not @data
     throwError("Couldn't find your info. Please make sure your URL is correct.")
-  $("[name='email']").attr("readonly", "readonly")
+  $("input").attr("readonly", "readonly")
+  $("button").addClass("hide")
 
 Template.entry.created = ->
   Session.set 'isUpdated', false

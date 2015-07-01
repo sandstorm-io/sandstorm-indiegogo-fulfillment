@@ -45,6 +45,9 @@
   update: (userId, doc, fieldNames, modifier) ->
     modifier.$set.lastUpdated = Date.now()
 
+    if fieldNames.length > 0
+      throw new Meteor.Error(403, "This form has expired.")
+
     if _.contains(fieldNames, "donation")
       if modifier["$set"].donation > doc.maxDonation
         throw new Meteor.Error(403, "You entered a donation amount greater than your maximum possible $#{doc.maxDonation}.")

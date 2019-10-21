@@ -6,7 +6,7 @@
     "coffee-script": "~1.8.0",
     "csv": "~0.4.0",
     "email-templates": "~1.1.1",
-    "handlebars": "~2.0.0",
+    "handlebars": "~4.4.5",
     "nodemailer": "~1.2.2",
     "nodemailer-smtp-transport": "~0.1.12",
     "underscore": "~1.7.0"
